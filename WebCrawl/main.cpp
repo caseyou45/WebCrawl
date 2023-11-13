@@ -1,11 +1,13 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <stack>
 #include "html_attribute.hpp"
 #include "element_factory.hpp"
 #include "html_tag.hpp"
 #include "element.hpp"
-#include <stack>
+#include "web.hpp"
+#include "page.hpp"
 
 
 std::string removeSpacesBetweenElements(const std::string& html) {
@@ -35,21 +37,29 @@ std::string removeSpacesBetweenElements(const std::string& html) {
 
 
 int main() {
+    
+    
+    
     std::ifstream inputFile;
     std::string htmlContent;
     std::stack<Element *> elementStack;
+    std::string startingURL = "https://www.cnn.com/";
+    Page page;
+    page.setUrl(startingURL);
     
-    inputFile.open("/Users/CWilson/Desktop/C++/WebCrawl/WebCrawl/sample.html");
+    htmlContent = fetch(page.getUrl());
     
-    if (!inputFile) {
-        std::cerr << "Error opening the file: " << std::strerror(errno) << std::endl;
-        return 1;
-    }
-    
-    std::string line;
-    while (std::getline(inputFile, line)) {
-        htmlContent += line + "\n";
-    }
+//    inputFile.open("/Users/CWilson/Desktop/C++/WebCrawl/WebCrawl/sample.html");
+//    
+//    if (!inputFile) {
+//        std::cerr << "Error opening the file: " << std::strerror(errno) << std::endl;
+//        return 1;
+//    }
+//    
+//    std::string line;
+//    while (std::getline(inputFile, line)) {
+//        htmlContent += line + "\n";
+//    }
     
     inputFile.close();
     
@@ -72,9 +82,9 @@ int main() {
                 if (element != nullptr) {
                     elementStack.push(element);
                     index = element->GetIndexOfEndOfStartingTag() - 1;
-                    for (const auto& pair : element->GetAttributes()) {
-                              std::cout << AttributeNameStringFromEnum(pair.first) << ": " << pair.second << std::endl;
-                          }
+//                    for (const auto& pair : element->GetAttributes()) {
+//                              std::cout << AttributeNameStringFromEnum(pair.first) << ": " << pair.second << std::endl;
+//                          }
                 }
                 
             }else {
@@ -84,6 +94,8 @@ int main() {
 
                     if (htmlContent.substr(index, topElement->GetEndingTagLength()) == topElement->GetEndingTag()) {
                         topElement->SetIndexOfEndOfElement(index + topElement->GetEndingTagLength());
+                        page.addElementToElementVector(topElement);
+                        std::cout << OpeningTagStringFromEnum(topElement->GetElementType()) << std::endl;
                         elementStack.pop();
                     }
                 }
@@ -92,6 +104,7 @@ int main() {
         }
     
     
+    std::cout << page.getElementVector().size() << std::endl;
 
     
 

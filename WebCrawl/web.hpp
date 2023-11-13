@@ -8,6 +8,12 @@
 #ifndef web_hpp
 #define web_hpp
 
-#include <stdio.h>
+#include <iostream>
+#include <string>
+#include <curl/curl.h>
 
-#endif /* web_hpp */
+size_t WriteCallback(void* contents, size_t size, size_t nmemb, std::string* output);
+
+std::string fetch(std::string url);
+
+#endif

@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1B24B5B22B0271AE00E620D2 /* parse.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B24B5B02B0271AE00E620D2 /* parse.cpp */; };
+		1B42CF842B01177C00740E73 /* web.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CF822B01177C00740E73 /* web.cpp */; };
+		1B42CF872B01268700740E73 /* libcurl.4.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 1B42CF862B01268700740E73 /* libcurl.4.tbd */; };
 		1B84AEA52AF2E84F00F1396B /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B84AEA42AF2E84F00F1396B /* main.cpp */; };
 		1B84AEB02AF2E85A00F1396B /* html_attribute.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B84AEAE2AF2E85900F1396B /* html_attribute.cpp */; };
 		1B84AEB12AF2E85A00F1396B /* html_tag.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1B84AEAC2AF2E85900F1396B /* html_tag.cpp */; };
@@ -26,6 +29,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		1B24B5B02B0271AE00E620D2 /* parse.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = parse.cpp; sourceTree = "<group>"; };
+		1B24B5B12B0271AE00E620D2 /* parse.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = parse.hpp; sourceTree = "<group>"; };
+		1B24B5B52B0272A300E620D2 /* page.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = page.hpp; sourceTree = "<group>"; };
+		1B42CF822B01177C00740E73 /* web.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = web.cpp; sourceTree = "<group>"; };
+		1B42CF832B01177C00740E73 /* web.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = web.hpp; sourceTree = "<group>"; };
+		1B42CF862B01268700740E73 /* libcurl.4.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libcurl.4.tbd; path = usr/lib/libcurl.4.tbd; sourceTree = SDKROOT; };
 		1B84AEA42AF2E84F00F1396B /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		1B84AEA62AF2E85800F1396B /* sample.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = sample.html; sourceTree = "<group>"; };
 		1B84AEA72AF2E85900F1396B /* element.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = element.hpp; sourceTree = "<group>"; };
@@ -43,17 +52,40 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B42CF872B01268700740E73 /* libcurl.4.tbd in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1B24B5B32B02722900E620D2 /* classes */ = {
+			isa = PBXGroup;
+			children = (
+				1B84AEA72AF2E85900F1396B /* element.hpp */,
+				1B84AEAB2AF2E85900F1396B /* html_attribute.hpp */,
+				1B84AEA92AF2E85900F1396B /* html_tag.hpp */,
+				1B84AEAC2AF2E85900F1396B /* html_tag.cpp */,
+				1B84AEAE2AF2E85900F1396B /* html_attribute.cpp */,
+				1B24B5B52B0272A300E620D2 /* page.hpp */,
+			);
+			path = classes;
+			sourceTree = "<group>";
+		};
+		1B42CF852B01268700740E73 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				1B42CF862B01268700740E73 /* libcurl.4.tbd */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		1BB7BBB02AEFDE5200AAFB8B = {
 			isa = PBXGroup;
 			children = (
 				1BB7BBBB2AEFDE5300AAFB8B /* WebCrawl */,
 				1BB7BBBA2AEFDE5300AAFB8B /* Products */,
+				1B42CF852B01268700740E73 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -68,15 +100,15 @@
 		1BB7BBBB2AEFDE5300AAFB8B /* WebCrawl */ = {
 			isa = PBXGroup;
 			children = (
-				1B84AEA72AF2E85900F1396B /* element.hpp */,
-				1B84AEAB2AF2E85900F1396B /* html_attribute.hpp */,
+				1B24B5B32B02722900E620D2 /* classes */,
 				1B84AEA62AF2E85800F1396B /* sample.html */,
 				1B84AEA82AF2E85900F1396B /* element_factory.hpp */,
-				1B84AEA92AF2E85900F1396B /* html_tag.hpp */,
 				1B84AEAA2AF2E85900F1396B /* element_factory.cpp */,
-				1B84AEAC2AF2E85900F1396B /* html_tag.cpp */,
-				1B84AEAE2AF2E85900F1396B /* html_attribute.cpp */,
 				1B84AEA42AF2E84F00F1396B /* main.cpp */,
+				1B42CF822B01177C00740E73 /* web.cpp */,
+				1B42CF832B01177C00740E73 /* web.hpp */,
+				1B24B5B02B0271AE00E620D2 /* parse.cpp */,
+				1B24B5B12B0271AE00E620D2 /* parse.hpp */,
 			);
 			path = WebCrawl;
 			sourceTree = "<group>";
@@ -142,6 +174,8 @@
 				1B84AEA52AF2E84F00F1396B /* main.cpp in Sources */,
 				1B84AEB02AF2E85A00F1396B /* html_attribute.cpp in Sources */,
 				1B84AEB12AF2E85A00F1396B /* html_tag.cpp in Sources */,
+				1B42CF842B01177C00740E73 /* web.cpp in Sources */,
+				1B24B5B22B0271AE00E620D2 /* parse.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
